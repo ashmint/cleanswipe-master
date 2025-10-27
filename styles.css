@@ -1097,6 +1097,24 @@ textarea:focus {
     margin-top: 2rem;
   }
 
+  .shape-1,
+  .shape-2 {
+    width: clamp(220px, 70vw, 320px);
+    height: clamp(220px, 70vw, 320px);
+  }
+
+  .shape-1 {
+    top: -140px;
+    left: 50%;
+    transform: translateX(-65%);
+  }
+
+  .shape-2 {
+    top: 45%;
+    right: 50%;
+    transform: translateX(65%);
+  }
+
   .hero-media {
     aspect-ratio: auto;
     width: min(380px, 85vw);
