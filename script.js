@@ -22,13 +22,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const popupClose = popup?.querySelector('.btn-secondary');
 
   if (form && popup && popupClose) {
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
+    const submitButton = form.querySelector('[type="submit"]');
+
+    const showPopup = () => {
       popup.classList.add('active');
       form.reset();
       setTimeout(() => {
         popup.querySelector('button')?.focus();
       }, 120);
+    };
+
+    const setSubmitting = (isSubmitting) => {
+      if (!submitButton) return;
+      submitButton.disabled = isSubmitting;
+      submitButton.setAttribute('aria-busy', String(isSubmitting));
+    };
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      setSubmitting(true);
+
+      const formData = new FormData(form);
+      const encoded = new URLSearchParams(formData).toString();
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encoded,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          showPopup();
+        })
+        .catch(() => {
+          alert('Something went wrong. Please try again.');
+        })
+        .finally(() => {
+          setSubmitting(false);
+        });
     });
 
     popupClose.addEventListener('click', () => {

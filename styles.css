@@ -833,6 +833,14 @@ a {
   box-shadow: var(--shadow-soft);
 }
 
+.netlify-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

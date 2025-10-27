@@ -475,8 +475,20 @@
               Let's discuss your paper supply needs.
             </p>
           </div>
-          <form name="contact" method="POST" class="contact-form" data-netlify="true">
-             <input type="hidden" name="form-name" value="contact" />
+          <form
+            name="contact"
+            method="POST"
+            class="contact-form"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="netlify-hidden" aria-hidden="true">
+                <label>
+                  Leave this field empty
+                  <input name="bot-field" />
+                </label>
+              </p>
             <div class="form-grid">
               <label>
                 Name
