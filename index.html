@@ -32,7 +32,38 @@
         <a href="#clients">Clients</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <div class="mobile-nav__inner">
+        <button
+          type="button"
+          class="nav-close"
+          aria-label="Close navigation menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <main>
       <section class="hero" id="home">
@@ -199,7 +230,7 @@
           <article class="product-card">
             <div class="product-photo">
               <img
-                src="assets/paper-napkin.jpg"
+                src="assets/pop-up.png"
                 alt="Pop-up tissues in premium packaging"
                 loading="lazy"
               />
@@ -350,6 +381,15 @@
             </article>
             <article class="client-card">
               <img
+                src="assets/clients/I'deli-Cafe.png"
+                alt="I'deli Cafe logo"
+                loading="lazy"
+                class="client-logo"
+              />
+              <span class="client-name">I'deli Cafe</span>
+            </article>
+            <article class="client-card">
+              <img
                 src="assets/clients/Paragon.png"
                 alt="Paragon logo"
                 loading="lazy"
@@ -420,6 +460,15 @@
                 class="client-logo"
               />
               <span class="client-name">Gokul Oottupura</span>
+            </article>
+            <article class="client-card" aria-hidden="true">
+              <img
+                src="assets/clients/I'deli-Cafe.png"
+                alt=""
+                loading="lazy"
+                class="client-logo"
+              />
+              <span class="client-name">I'deli Cafe</span>
             </article>
             <article class="client-card" aria-hidden="true">
               <img
@@ -520,9 +569,26 @@
               Ground Floor, Manath Residency, NGO Quarters, Kakkanad, Kochi,
               Kerala 682021, India
             </p>
-            <p>phone: +91 89215 97420</p>
-            <p>sales@cleanswipe.in</p>
+            <p>
+              phone:
+              <a href="tel:+918921597420" class="contact-link"
+                >+91 89215 97420</a
+              >
+            </p>
+            <p>
+              <a href="mailto:sales@cleanswipe.in" class="contact-link"
+                >sales@cleanswipe.in</a
+              >
+            </p>
             <p>www.cleanswipe.in</p>
+            <a
+              class="btn-map"
+              href="https://maps.app.goo.gl/LrM59zDx3iK4ZdTc9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on Google Maps
+            </a>
           </div>
         </div>
       </section>
@@ -578,3 +644,4 @@
     <script src="script.js"></script>
   </body>
 </html>
+

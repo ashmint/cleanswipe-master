@@ -17,6 +17,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const navToggle = document.querySelector('.nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const navClose = document.querySelector('.nav-close');
+  const mobileNavLinks = mobileNav?.querySelectorAll('a');
+
+  const setNavOpen = (isOpen) => {
+    if (!navToggle || !mobileNav) {
+      return;
+    }
+
+    mobileNav.classList.toggle('open', isOpen);
+    navToggle.classList.toggle('is-active', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    mobileNav.setAttribute('aria-hidden', String(!isOpen));
+    document.body.classList.toggle('nav-open', isOpen);
+
+    if (isOpen) {
+      mobileNav.querySelector('a')?.focus();
+    } else {
+      navToggle.focus();
+    }
+  };
+
+  if (navToggle && mobileNav) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      setNavOpen(!expanded);
+    });
+  }
+
+  navClose?.addEventListener('click', () => setNavOpen(false));
+  mobileNavLinks?.forEach((link) => link.addEventListener('click', () => setNavOpen(false)));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setNavOpen(false);
+    }
+  });
+
   const form = document.querySelector('.contact-form');
   const popup = document.querySelector('.form-popup');
   const popupClose = popup?.querySelector('.btn-secondary');
